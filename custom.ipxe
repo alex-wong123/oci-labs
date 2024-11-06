@@ -96,7 +96,7 @@ goto sub_boot
 imgfree
 iseq ${os_arch} amd64 && set ubuntu_iso_url http://releases.ubuntu.com/${codename}/ubuntu-${version_number}-live-server-${os_arch}.iso ||
 iseq ${os_arch} arm64 && set ubuntu_iso_url https://objectstorage.ap-mumbai-1.oraclecloud.com/n/axfg1045xnoc/b/ubuntu22.04_primary_mirror_image/o/ubuntu-22.04.2-live-server-arm64.iso ||
-isset ${dhcp-server} && set netboot_params ip=ip=::10.0.20.1:255.255.255.0:::dhcp url=${ubuntu_iso_url} || set netboot_params
+isset ${dhcp-server} && set netboot_params ip=::10.0.20.1:255.255.255.0:::dhcp url=${ubuntu_iso_url} || set netboot_params
 echo Loading Ubuntu Subiquity Network Installer...
 kernel ${kernel_url}vmlinuz root=/dev/ram0 ramdisk_size=3500000 cloud-config-url=/dev/null ${netboot_params} ${install_params} initrd=initrd.magic ${cmdline}
 initrd ${kernel_url}initrd
